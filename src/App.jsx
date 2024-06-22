@@ -19,16 +19,19 @@ function App() {
     <div className="w-full">
       <ButtonPage title={"Light Side - May the Force Be With You"} color={"easy"} content={
         <div className="">
-          <p className="mb-4">
-            In this section, we'll look at the basics of preparing to attack our enemies, the Empire.
+          <p className="mb-4 ">
+            In this section, you will look at the basis of the indexers and enumerators. Then we will be able to start our plan to prepare our attack against the Empire.<br/>
+            <br/>
+            <span className="italic text-xl">"Much to learn, you still have."</span>
           </p>
           <pre className="mb-4 text-red-600 text-2xl">
             Enum.cs
           </pre>
+          <p className="mb-4">In this folder, you have to create a static class called Enum and implement the following methods</p>
           <ButtonPart title={"EnumList"} color={"easy"} content={
             <div>
               <p className="mb-4">
-                In order to make the ordering easier, we'll create an EnumList.
+                You need to create a method called EnumList that will return a list of numbers from the input list.
               </p>
               <TexttoCode code={`public IEnumerable<int> EnumList(int[] list);`} title={"Prototype(s)"} />
               <br />
@@ -56,7 +59,7 @@ foreach(int number in EnumList(my_list))
           <ButtonPart title={"EnumMultipleOf7"} color={"easy"} content={
             <div>
               <p className="mb-4">
-                We'll now create a function that will return the numbers that are multiples of 7.
+                You need to create a method that will return the numbers that are multiples of 7 called EnumMultipleOf7.
               </p>
               <TexttoCode code={`public IEnumerable<int> EnumMultipleOf7(int[] list);`} title={"Prototype(s)"} />
               <br />
@@ -76,7 +79,7 @@ foreach (int number in multiplesOf7)
           <ButtonPart title={"EnumInOrder"} color={"easy"} content={
             <div>
               <p className="mb-4">
-                We'll now create a function that will return the numbers in order.
+                You need to create a method that will return the numbers in order called EnumInOrder.
               </p>
               <TexttoCode code={`public IEnumerable<int> EnumInOrder(int[] list);`} title={"Prototype(s)"} />
               <br />
@@ -106,66 +109,140 @@ foreach(int number in EnumInOrder(my_list))
             Documents.cs
           </pre>
 
-          <p className="mb-4">You need to create a class call Documents.</p>
+          <p className="mb-4">We received the plans of the Death Star. You need a new class called Documents to store all the information. This class inherits from IEnumerable</p>
 
           <ButtonPart title={"Properties"} color={"easy"} content={
             <div>
-              <p className="mb-4"> We'll now create a class that will have properties for the document.</p>
+              <p className="mb-4"> Create a class that will have properties for the document.</p>
               <ul className="list-disc list-inside">
-                <li><span className="text-red-600">_list</span> => list of string</li>
-                <li><span className="text-red-600">_length</span> => length of _list</li>
-                <li><span className="text-red-600">_position</span> => position of the index</li>
+                <li><span className="text-red-600">_list</span> => A private list of strings.</li>
+                <li><span className="text-red-600">_length</span> => A private property that represents the length of _list.</li>
+                <li><span className="text-red-600">_position</span> => A private property that represents the current index position in _list.</li>
               </ul>
             </div>
           } />
 
           <ButtonPart title={"Constructor"} color={"easy"} content={
             <div>
+              <p className="mb-4">You will now create the constructor for the class, which will initialize the list.</p>
               <TexttoCode code={`public Documents(List<string> list);`} title={"Prototype(s)"}/>
+            </div>
+          } />
+
+          <ButtonPart title={"GetLength"} color={"easy"} content={
+            <div>
+              <p className="mb-4">You have to create a public method that will return the length of the list.</p>
+              <TexttoCode code={`public int GetLength();`} title={"Prototype(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"Add"} color={"easy"} content={
             <div>
-              <p className="mb-4"> We'll now create a function that will add a word to the list.</p>
+              <p className="mb-4"> You need a public method that will add a word to the list.</p>
               <TexttoCode code={`public void Add(string word);`} title={"Prototype(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"Remove"} color={"easy"} content={
             <div>
-              <p className="mb-4"> We'll now create a function that will remove a word from the list.</p>
+              <p className="mb-4">You need a public method that will remove a word from the list at a specified index.</p>
               <TexttoCode code={`public void Remove(int index);`} title={"Prototype(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"Indexer"} color={"easy"} content={
             <div>
-              <p className="mb-4"> We'll now create a indexer that will return the word at the index.</p>
+              <p className="mb-4">Create an indexer that will return the word at the specified index.</p>
               <TexttoCode code={`public string this[int index];`} title={"Prototype(s)"}/>
+<br/>
+              <TexttoCode code={`List<string> list = new List<string>();
+
+Documents documents = new Documents(list);
+documents.Add("Hello");
+documents.Add("World");
+
+for (int i = 0; i < documents.GetLength(); i++)
+{
+    Console.Write(documents[i] + " ");
+}
+// "Hello World"
+
+documents.Remove(0);
+for (int i = 0; i < documents.GetLength(); i++)
+{
+    Console.Write(documents[i] + " ");
+}
+// "World"`} title={"Code example(s)"}/>
             </div>
           } />
 
-          <br/>
+          <ButtonPart title={"GetEnumerator"} color={"easy"} content={
+            <div>
+              <p className="mb-4">Create a method that will return the enumerator of all the words in the list.</p>
+              <TexttoCode code={`public IEnumerator GetEnumerator();`} title={"Prototype(s)"} />
+              <br />
+              <TexttoCode code={`List<string> list = new List<string>();
+Documents documents = new Documents(list);
+documents.Add("Hello");
+documents.Add("World");
+
+foreach (string document in documents)
+{
+    Console.WriteLine(document);
+}
+// "Hello"
+// "World"`} title={"Code example(s)"}/>
+            </div>
+
+
+          } />
+
+          <p className="mb-4">You need to modify the inheritance of the Documents class to include IEnumerator. In this section, you will see how to use iterators for the class with a while loop. <br/>Now you will use the propertie <span className="text-red-600 font-bold">_position</span> which is representing the current index in the list.
+            <br/>The position index need to be equal to <span className="font-bold">-1</span> when you start and reset.</p>
 
           <ButtonPart title={"MoveNext"} color={"easy"} content={
             <div>
-              <p className="mb-4"> We'll now create a function that will return true if there is a next word.</p>
+              <p className="mb-4"> Create a method that will return true if there is a next word or false if the index is out of range.</p>
               <TexttoCode code={`public bool MoveNext();`} title={"Prototype(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"Reset"} color={"easy"} content={
             <div>
-              <p className="mb-4"> We'll now create a function that will reset the index.</p>
+              <p className="mb-4"> You will now create a method that will reset the index.</p>
               <TexttoCode code={`public void Reset()`} title={"Prototype(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"Current"} color={"easy"} content={
             <div>
-              <p className="mb-4"> We'll now create a function that will return the current word.</p>
-              <TexttoCode code={`public string Current { get; }`} title={"Prototype(s)"}/>
+              <p className="mb-4">Here, you need to modify the getter to return the string at the current index.
+                <br/><br/><span className="font-bold">P.S</span>: The type object in this exercice represents the type string.</p>
+              <TexttoCode code={`public object Current 
+{ 
+    get
+    {
+        throw new NotImplementedException();
+    }
+}`} title={"Prototype(s)"}/>
+            </div>
+          } />
+
+          <ButtonPart title={"Example"} color={"easy"} content={
+            <div>
+              <p className="mb-4">Here is an example of how to test the three methods mentioned above.</p>
+              <TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
+Documents documents = new Documents(list);
+
+while (documents.MoveNext())
+{
+    Console.WriteLine(documents.Current);
+}
+
+documents.Reset();
+// "Hello"
+// "World"
+`} title={"Code example(s)"}/>
             </div>
           } />
 
@@ -178,67 +255,163 @@ foreach(int number in EnumInOrder(my_list))
       <ButtonPage title={"Force Side - A New Hope"} color={"medium"} content={
         <div className="">
           <p className="mb-4">
-            In this section, we'll look at the basics of preparing to defend ourselves from the Rebels.
+            Now that we have the plans, we need to encrypt them to send them to all the Rebels. You will create a
+            class called Encryption that will have different methods to encrypt and decrypt the document.
           </p>
-
+          <span className="italic text-xl">"Patience you must have my young Padawan."</span>
+          <br />
+          <br />
           <pre className="mb-4 text-red-600 text-2xl">
             Encryption.cs
           </pre>
-          <ButtonPart title={"Properties"} color={"medium"} content={
+
+          <p className="mb-4">Before creating the method in the class, you need to create two delegates: one for
+            encryption and one for decryption. Add these prototypes just before the class definition. (don't modify
+            it)</p>
+          <ButtonPart title={"Delegates"} color={"medium"} content={
             <div>
-              <p className="mb-4"> We'll now create a class that will have properties for the document.</p>
-              <ul className="list-disc list-inside">
-                <li><span className="text-red-600">Encrypt_Delegate</span></li>
-                <li><span className="text-red-600">Decrypt_Delegate</span></li>
-              </ul>
+              <TexttoCode code={`public delegate string Encrypt_Delegate(string text);
+public delegate string Decrypt_Delegate(string text);`} title={"Prototype(s)"} />
+              <br />
             </div>
           } />
+          <p className="mb-4">Now, you have to create a static class call Encryption and implement the following
+            methods.</p>
           <ButtonPart title={"Substitution_Encrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`private string Substitution_Encrypt(string text, string key);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method that will encrypt the text by using the substitution
+                method. <br />The substitution method is a simple encryption method that replaces each letter in the
+                text by another one. The key is a string that contains the letters in the order they should be
+                replaced.
+                <br /> Here the parameter <span className="text-red-600 font-bold">text</span> is the text to encrypt
+                and the parameter <span className="text-red-600 font-bold">key</span> is the key to encrypt the text.
+              </p>
+              <TexttoCode code={`private static string Substitution_Encrypt(string text, string key);`}
+                          title={"Prototype(s)"} />
               <br />
+              <TexttoCode code={`string plaintext = "HELLO";
+string key = "QWERTYUIOPASDFGHJKLZXCVBNM";
+string encryptedText = Substitution_Encrypt(plaintext, key);
+Console.WriteLine(encryptedText);
+// "QRYYP"`} title={"Code example(s)"} />
+            </div>
+          } />
+
+          <ButtonPart title={"Substitution_Decrypt"} color={"medium"} content={
+            <div>
+              <p className="mb-4"> You need to create a method that will decrypt the text by using the substitution
+                method. <br />The substitution method is a simple encryption method that replaces each letter in the
+                text by another one. The key is a string that contains the letters in the order they should be
+                replaced.
+                <br /> Here the parameter <span className="text-red-600 font-bold">text</span> is the text to decrypt
+                and the parameter <span className="text-red-600 font-bold">key</span> is the key to decrypt the text.
+              </p>
+              <TexttoCode code={`private static string Substitution_Decrypt(string text, string key);`}
+                          title={"Prototype(s)"} />
+              <br />
+              <TexttoCode code={`string encryptedText = "QRYYP";
+string key = "QWERTYUIOPASDFGHJKLZXCVBNM";
+string decryptedText = Substitution_Decrypt(encryptedText, key);
+Console.WriteLine(decryptedText);
+// "HELLO"`} title={"Code example(s)"} />
             </div>
           } />
 
           <ButtonPart title={"RotationOf10_Encrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`private string RotationOf10_Encrypt(string text);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method that will encrypt the text by using the rotation of 10
+                method. <br />The rotation of 10 method is a simple encryption method that replaces each letter in the
+                text with the letter that is 10 positions ahead in the alphabet. If the letter is at the end of the
+                alphabet, it will wrap around to the beginning.</p>
+              <TexttoCode code={`private static string RotationOf10_Encrypt(string text);`} title={"Prototype(s)"} />
               <br />
+              <TexttoCode code={`string plaintext = "HELLO";
+string encryptedText = RotationOf10_Encrypt(plaintext);
+Console.WriteLine(encryptedText);
+// "ROVVY"`} title={"Code example(s)"} />
             </div>
           } />
 
           <ButtonPart title={"RotationOf10_Decrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`private string RotationOf10_Decrypt(string text);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method that will decrypt the text by using the rotation of 10
+                method. <br />Each letter must be shifted 10 positions to the left in the alphabet to find the
+                plaintext.</p>
+              <TexttoCode code={`private static string RotationOf10_Decrypt(string text);`} title={"Prototype(s)"} />
               <br />
             </div>
           } />
 
           <ButtonPart title={"Vigenere_Encrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`private string Vigenere_Encrypt(string text, string key);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method that will encrypt the text by using the Vigenere
+                method. <br />The Vigenere method is a simple encryption method that uses a keyword to encrypt the text.
+                The keyword is repeated until it is the same length as the text. Each letter in the text is shifted by
+                the corresponding letter in the keyword.</p>
+              <TexttoCode code={`private static string Vigenere_Encrypt(string text, string key);`}
+                          title={"Prototype(s)"} />
               <br />
+              <TexttoCode code={`string plaintext = "HELLO";
+string key = "KEY";
+string encryptedText = Vigenere_Encrypt(plaintext, key);
+Console.WriteLine(encryptedText);
+// "ROVVY"`} title={"Code example(s)"} />
             </div>
           } />
 
           <ButtonPart title={"Vigenere_Decrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`private string Vigenere_Decrypt(string text, string key);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method that will decrypt the text by using the Vigenere
+                method. <br />Each letter must be shifted back by the corresponding letter in the keyword to find the
+                plaintext.</p>
+              <TexttoCode code={`private string Vigenere_Decrypt(string text, string key);`} title={"Prototype(s)"} />
               <br />
+
+              <TexttoCode code={`string encryptedText = "ROVVY";
+string key = "KEY";
+string decryptedText = Vigenere_Decrypt(encryptedText, key);
+Console.WriteLine(decryptedText);
+// "HELLO"`} title={"Code example(s)"} />
+
             </div>
           } />
 
-          <ButtonPart title={"GetEncryptDelgate"} color={"medium"} content={
+          <ButtonPart title={"GetEncryptDelegate"} color={"medium"} content={
             <div>
-              <TexttoCode code={`public Encrypt_Delegate GetEncryptDelgate(string name);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method that will return the encryption delegate based on the name
+                of the encryption method. <br />
+                if the name is "<span className="font-bold">Substitution</span>", return the Substitution_Encrypt
+                method. <br />
+                if the name is "<span className="font-bold">Vigenere</span>", return the Vigenere_Encrypt method.<br />
+                Don't test for the RotationOf10 method.</p>
+
+              <TexttoCode code={`public static Encrypt_Delegate GetEncryptDelegate(string name);`}
+                          title={"Prototype(s)"} />
               <br />
+
+              <TexttoCode code={`Encrypt_Delegate encryptDelegate = GetEncryptDelegate("Substitution"); // Substitution_Encrypt method
+string encryptedText = encryptDelegate("HELLO", "QWERTYUIOPASDFGHJKLZXCVBNM");
+Console.WriteLine(encryptedText);
+// "QRYYP"`} title={"Code example(s)"} />
             </div>
           } />
 
-          <ButtonPart title={"GetDecryptDelgate"} color={"medium"} content={
+          <ButtonPart title={"GetDecryptDelegate"} color={"medium"} content={
             <div>
-              <TexttoCode code={`public Decrypt_Delegate GetDecryptDelgate(string name);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method that will return the decryption delegate based on the name
+                of the decryption method. <br />
+                if the name is "<span className="font-bold">Substitution</span>", return the Substitution_Decrypt
+                method. <br />
+                if the name is "<span className="font-bold">Vigenere</span>", return the Vigenere_Decrypt method.<br />
+                Don't test for the RotationOf10 method.</p>
+              <TexttoCode code={`public static Decrypt_Delegate GetDecryptDelegate(string name);`}
+                          title={"Prototype(s)"} />
               <br />
+
+              <TexttoCode code={`Decrypt_Delegate decryptDelegate = GetDecryptDelegate("Substitution"); // Substitution_Decrypt method
+string decryptedText = decryptDelegate("QRYYP", "QWERTYUIOPASDFGHJKLZXCVBNM");
+Console.WriteLine(decryptedText);
+// "HELLO"`} title={"Code example(s)"} />
             </div>
           } />
           <br />
@@ -246,25 +419,61 @@ foreach(int number in EnumInOrder(my_list))
           <pre className="mb-4 text-red-600 text-2xl">
             Document.cs
           </pre>
+          <p className="mb-4">You have to update the Documents class to include the encryption and decryption delegates.
+            Then we can safely encrypt and decrypt the document and send it to the Rebels.</p>
 
           <ButtonPart title={"EnumEncrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`public IEnumerable<string> EnumEncrypt(Encrypt_Delegate encrypt);`} title={"Prototype(s)"}/>
+              <p className="mb-4">You have to implement a method that will encrypt all the words in the list using the
+                encryption delegate and return the encrypted words as an IEnumerable.</p>
+              <TexttoCode code={`public IEnumerable<string> EnumEncrypt(Encrypt_Delegate encrypt);`}
+                          title={"Prototype(s)"} />
               <br />
+
+              <TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
+Documents documents = new Documents(list);
+encryptDelegate = Encryption.GetEncryptDelegate("Substitution");
+foreach (string document in documents.EnumEncrypt(encryptDelegate))
+{
+    Console.WriteLine(document);
+}
+// "QRYYP"
+// "XJYLD"`} title={"Code example(s)"} />
             </div>
           } />
 
           <ButtonPart title={"IndexerEncrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`public string this[int index, Encrypt_Delegate encrypt];`} title={"Prototype(s)"}/>
+              <p className="mb-4">You have to implement a method that will encrypt the word at the specified index using
+                the encryption delegate.</p>
+              <TexttoCode code={`public string this[int index, Encrypt_Delegate encrypt];`} title={"Prototype(s)"} />
               <br />
+
+              <TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
+Documents documents = new Documents(list);
+encryptDelegate = Encryption.GetEncryptDelegate("Substitution");
+Console.WriteLine(documents[0, encryptDelegate]);
+// "QRYYP"`} title={"Code example(s)"} />
             </div>
           } />
 
           <ButtonPart title={"EnumDecrypt"} color={"medium"} content={
             <div>
-              <TexttoCode code={`public IEnumerable<string> EnumDecrypt(Decrypt_Delegate decrypt);`} title={"Prototype(s)"}/>
+              <p className="mb-4">You have to implement a method that will decrypt all the words in the list using the
+                decryption delegate and return the decrypted words as an IEnumerable.</p>
+              <TexttoCode code={`public IEnumerable<string> EnumDecrypt(Decrypt_Delegate decrypt);`}
+                          title={"Prototype(s)"} />
               <br />
+
+              <TexttoCode code={`List<string> list = new List<string> { "QRYYP", "XJYLD" };
+Documents documents = new Documents(list);
+decryptDelegate = Encryption.GetDecryptDelegate("Substitution");
+foreach (string document in documents.EnumDecrypt(decryptDelegate))
+{
+    Console.WriteLine(document);
+}
+// "Hello"
+// "World"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -277,31 +486,57 @@ foreach(int number in EnumInOrder(my_list))
       <ButtonPage title={"Dark Side - The Empire Strikes Back"} color={"hard"} content={
         <div className="">
           <p className="mb-4">
-          In this section, we'll look at the basics of preparing to defend ourselves from the Rebels.
+            We have sent the encrypted plans to the Rebels. Now, we are preparing our attack on the Death
+            Star. However, we are facing an issue with our navigation system. You have to develop a new
+            system to assist us in finding the shortest path between two planets.
           </p>
+          <span className="italic text-xl">"Your path you must decide."</span>
+          <br />
+          <br />
           <pre className="mb-4 text-red-600 text-2xl">
             Planet.cs
           </pre>
 
+          <p className="mb-4">In this folder, you have to create a class call Planet and implement the following methods and properties</p>
           <ButtonPart title={"Properties"} color={"hard"} content={
             <div>
-              <p className="mb-4"> We'll now create a class that will have properties for the document.</p>
               <ul className="list-disc list-inside">
-                <li><span className="text-red-600">Name</span></li>
-                <li><span className="text-red-600">Neighbors</span></li>
+                <li><span className="text-red-600">Name</span> => A public property that represents the name of the planet.</li>
+                <li><span className="text-red-600">_neighbors</span> => A private property that represents a list of tuples containing the neighboring planets and the distance to them.</li>
               </ul>
             </div>
           } />
 
           <ButtonPart title={"Constructor"} color={"hard"} content={
             <div>
-              <TexttoCode code={`public Planet(string name);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> Create the constructor for the class, which will initialize the name of the planet and the list of neighbors.</p>
+              <TexttoCode code={`public Planet(string name);`} title={"Prototype(s)"} />
             </div>
           } />
 
+          <ButtonPart title={"AddNeighbor"} color={"hard"} content={
+            <div>
+              <p className="mb-4"> You need a public method that will add a neighbor and the distance to the list of neighbors.</p>
+              <TexttoCode code={`public void AddNeighbor(Planet neighbor, int distance);`} title={"Prototype(s)"} />
+            </div>
+          } />
+
+
           <ButtonPart title={"GetEnumNeighbors"} color={"hard"} content={
             <div>
-              <TexttoCode code={`public IEnumerable<(Planet, int)> GetEnumNeighbors();`} title={"Prototype(s)"}/>
+              <p className="mb-4"> Create a method that will return the enumerator of all the neighbors in the list and the distance to them.</p>
+              <TexttoCode code={`public IEnumerable<(Planet, int)> GetEnumNeighbors();`} title={"Prototype(s)"} />
+
+              <br />
+              <TexttoCode code={`Planet planet1 = new Planet("Alderaan");
+Planet planet2 = new Planet("Tatooine");
+planet1.AddNeighbor(planet2, 10);
+
+foreach ((Planet neighbor, int distance) in planet1.GetEnumNeighbors())
+{
+    Console.WriteLine(neighbor.Name + " " + distance);
+}
+// "Tatooine 10"`} title={"Code example(s)"}/>
             </div>
           } />
 
@@ -309,36 +544,94 @@ foreach(int number in EnumInOrder(my_list))
             Galaxy.cs
           </pre>
 
+          <p className="mb-4">In this folder, you have to create a class call Galaxy and implement the following methods and properties</p>
+
           <ButtonPart title={"Properties"} color={"hard"} content={
             <div>
-              <p className="mb-4"> We'll now create a class that will have properties for the document.</p>
               <ul className="list-disc list-inside">
-                <li><span className="text-red-600">Planets</span></li>
+                <li><span className="text-red-600">_planets</span> => A private property that represents a list of planets in the galaxy.</li>
               </ul>
             </div>
           } />
 
           <ButtonPart title={"Constructor"} color={"hard"} content={
             <div>
-              <TexttoCode code={`public Galaxy();`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You have to create the constructor for the class, which will initialize the list of planets.</p>
+              <TexttoCode code={`public Galaxy();`} title={"Prototype(s)"} />
             </div>
           } />
 
           <ButtonPart title={"AddPlanet"} color={"hard"} content={
             <div>
-              <TexttoCode code={`public void AddPlanet(Planet planet);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need a public method that will add a planet to the list of planets.</p>
+              <TexttoCode code={`public void AddPlanet(Planet planet);`} title={"Prototype(s)"} />
+
+              <br/>
+              <TexttoCode code={`Galaxy galaxy = new Galaxy();
+Planet planet1 = new Planet("Alderaan");
+Planet planet2 = new Planet("Tatooine");
+galaxy.AddPlanet(planet1);
+galaxy.AddPlanet(planet2);
+
+// galaxy.planets = [planet1, planet2]`} title={"Code example(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"AddConnection"} color={"hard"} content={
             <div>
-              <TexttoCode code={`public void AddConnection(Planet planet1, Planet planet2, int distance);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need a public method that will add a connection between the two planets and the distance to the list of neighbors.</p>
+              <TexttoCode code={`public void AddConnection(Planet planet1, Planet planet2, int distance);`}
+                          title={"Prototype(s)"} />
+              <br/>
+              <TexttoCode code={`Galaxy galaxy = new Galaxy();
+Planet planet1 = new Planet("Alderaan");
+Planet planet2 = new Planet("Tatooine");
+galaxy.AddPlanet(planet1);
+galaxy.AddPlanet(planet2);
+galaxy.AddConnection(planet1, planet2, 10);
+
+foreach ((Planet neighbor, int distance) in planet1.GetEnumNeighbors())
+{
+    Console.WriteLine(neighbor.Name + " " + distance);
+}
+// "Tatooine 10"`} title={"Code example(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"FindShortestPath"} color={"hard"} content={
             <div>
-              <TexttoCode code={`public List<Planet> FindShortestPath(Planet start, Planet end);`} title={"Prototype(s)"}/>
+              <p className="mb-4"> You need to create a method to find the shortest path between two planets in the galaxy so that we can successfully destroy the Death Star.<br/>
+              You can use the <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" className="text-blue-800 underline">Dijkstra algorithm</a> to find the shortest path between two planets.</p>
+                <TexttoCode code={`public List<Planet> FindShortestPath(Planet start, Planet end);`}
+                          title={"Prototype(s)"} />
+              <br/>
+              <TexttoCode code={`Galaxy galaxy = new Galaxy();
+Planet planet1 = new Planet("Alderaan");
+Planet planet2 = new Planet("Tatooine");
+Planet planet3 = new Planet("Endor");
+Planet planet4 = new Planet("Hoth");
+Planet planet5 = new Planet("Dagobah");
+galaxy.AddPlanet(planet1);
+galaxy.AddPlanet(planet2);
+galaxy.AddPlanet(planet3);
+galaxy.AddPlanet(planet4);
+galaxy.AddPlanet(planet5);
+galaxy.AddConnection(planet1, planet2, 10);
+galaxy.AddConnection(planet1, planet3, 20);
+galaxy.AddConnection(planet2, planet3, 5);
+galaxy.AddConnection(planet3, planet4, 15);
+galaxy.AddConnection(planet4, planet5, 25);
+
+List<Planet> shortestPath = galaxy.FindShortestPath(planet1, planet5);
+for (i = 0; i < shortestPath.Count-1; i++)
+{
+    Console.Write(planet.Name + " -> ");
+}
+
+Console.WriteLine(shortestPath[shortestPath.Count-1].Name);
+// "Alderaan -> Tatooine -> Endor -> Hoth -> Dagobah"`} title={"Code example(s)"}/>
+
+
             </div>
           } />
 
