@@ -20,17 +20,6 @@ function TexttoCode({code, title})
           </pre>
         </div>
     </div>
-    /*<div className="bg-red-400">
-
-      <div className="rounded bg-gray-600">
-        <p className="text-2xl font-bold text-white bg-amber-400 ">Code</p>
-      </div>
-    <pre className="language-csharp">
-      <code dangerouslySetInnerHTML={{ __html: highlightedCode }} />
-    </pre>
-
-    </div>*/
-
   );
 }
 

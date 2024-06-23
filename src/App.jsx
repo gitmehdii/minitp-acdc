@@ -8,15 +8,62 @@ import 'prismjs/components/prism-csharp';
 import ButtonPage from "./ButtonPage.jsx";
 import ButtonPart from "./ButtonPart.jsx";
 import TexttoCode from "./code.jsx";
+import Info from "./info.jsx";
+import Footer from "./Footer.jsx";
 
 function App() {
   const [isOpen, setIsOpen] = useState(false);
-
+  const structure = `
+Tp-acdc
+├── TheGreatOffensive
+│   ├── Attack
+│   │   ├── Galaxy.cs
+│   │   └── Planet.cs
+│   ├── Preparation
+│   │   ├── Documents.cs
+│   │   ├── Encryption.cs
+│   │   └── Enum.cs
+│   ├── Tests
+│   │   └── Put your tests inside here
+│   ├── TheGreatOffensive.csproj
+│   └── Program.cs
+├── .gitignore
+├── TheGreatOffensive.sln
+└── README
+  `;
   const toggleContent = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="w-full">
+    <div className="w-full pl-5 pr-5 pt-3 pb-3">
+      <img src="./src/assets/perevsfils.png" className="w-80 h-32 object-cover" alt="Description du GIF" />
+      <h1 className="text-4xl font-sans font-semibold p-1 mt-2">The Great Offensive</h1>
+      <h2 className="italic text-3xl p-2">Indexers and Iterators</h2>
+      <ButtonPage title={"Guideline"} color={"info"} content={
+        <div>
+          <div className="bg-red-600 text-white rounded-t-lg p-3">
+        <span
+          className="font-semibold bg-red-600 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Repository structure</span>
+          </div>
+          <div className="bg-code_color p-1 rounded-b-lg">
+            <pre className="text-gray-400 pl-2">{structure}</pre>
+          </div>
+          <br />
+          <p className="mb-2">
+            Do not forget to check the following requirements before submitting your work:
+          </p>
+          <ul className="list-disc list-inside ml-4">
+            <li>The <span className="text-red-600">README</span> file is mandatory.</li>
+            <li>The given prototypes must be strictly respected.</li>
+            <li className="font-bold">Do not forget to test your code.</li>
+          </ul>
+        </div>
+      } />
+
+      <h3 className="text-4xl font-semibold p-2">Introduction</h3>
+      <p className="mb-4 p-2 text-justify text-xl"> A long time ago in a galaxy far, far away... <br/> The Rebel Alliance has acquired the plans for the Death Star. The next step is to send the encrypted plans to all the Rebels to destroy the Death Star and defeat the Empire. Your mission to save the galaxy is to distribute the plans to all the Rebels and repair the navigation system. <span className="font-semibold">May the Force be with you</span>.</p>
+
+
       <ButtonPage title={"Light Side - May the Force Be With You"} color={"easy"} content={
         <div className="">
           <p className="mb-4 ">
@@ -111,9 +158,9 @@ foreach(int number in EnumInOrder(my_list))
 
           <p className="mb-4">We received the plans of the Death Star. You need a new class called Documents to store all the information. This class inherits from IEnumerable</p>
 
-          <ButtonPart title={"Properties"} color={"easy"} content={
+          <ButtonPart title={"Attributes"} color={"easy"} content={
             <div>
-              <p className="mb-4"> Create a class that will have properties for the document.</p>
+              <p className="mb-4"> Create a class that will have attributes for the document.</p>
               <ul className="list-disc list-inside">
                 <li><span className="text-red-600">_list</span> => A private list of strings.</li>
                 <li><span className="text-red-600">_length</span> => A private property that represents the length of _list.</li>
@@ -133,6 +180,11 @@ foreach(int number in EnumInOrder(my_list))
             <div>
               <p className="mb-4">You have to create a public method that will return the length of the list.</p>
               <TexttoCode code={`public int GetLength();`} title={"Prototype(s)"}/>
+              <br/>
+              <TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
+Documents documents = new Documents(list);
+Console.WriteLine(documents.GetLength());
+// 2`} title={"Code example(s)"}/>
             </div>
           } />
 
@@ -140,21 +192,60 @@ foreach(int number in EnumInOrder(my_list))
             <div>
               <p className="mb-4"> You need a public method that will add a word to the list.</p>
               <TexttoCode code={`public void Add(string word);`} title={"Prototype(s)"}/>
+              <br/>
+              <TexttoCode code={`List<string> list = new List<string>();
+Documents documents = new Documents(list);
+documents.Add("Hello");
+documents.Add("World");
+// {"Hello", "World"}`} title={"Code example(s)"}/>
             </div>
           } />
 
           <ButtonPart title={"Remove"} color={"easy"} content={
             <div>
-              <p className="mb-4">You need a public method that will remove a word from the list at a specified index.</p>
-              <TexttoCode code={`public void Remove(int index);`} title={"Prototype(s)"}/>
+              <p className="mb-4">You need a public method that will remove a word from the list at a specified
+                index.</p>
+              <TexttoCode code={`public void Remove(int index);`} title={"Prototype(s)"} />
+              <br />
+<TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
+Documents documents = new Documents(list);
+documents.Remove(0);
+// {"World"}
+documents.Remove(2); // ArgumentOutOfRangeException
+documents.Remove(0);
+documents.Remove(0); // ArgumentOutOfRangeException
+`} title={"Code example(s)"}/>
+              <br />
+
+
+              <div className="bg-orange-600 text-white rounded-t-lg p-3">
+
+        <span
+          className="font-semibold bg-orange-400 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Warning</span>
+              </div>
+              <div className=" p-1  bg-white">
+                <p className="mb-4 mt-4">The method should throw an <span
+                  className="text-red-600 font-bold">ArgumentOutOfRangeException</span> if the index is invalid or the list is empty.</p>
+              </div>
             </div>
+
           } />
 
           <ButtonPart title={"Indexer"} color={"easy"} content={
             <div>
-              <p className="mb-4">Create an indexer that will return the word at the specified index.</p>
-              <TexttoCode code={`public string this[int index];`} title={"Prototype(s)"}/>
-<br/>
+              <p className="mb-4"> Create an indexer that will allow you to access the words in the list by index and modify them.</p>
+              <TexttoCode code={`public string this[int index]
+{
+    get
+    {
+        throw new NotImplementedException();
+    }
+    set
+    {
+        throw new NotImplementedException();
+    }
+}`} title={"Prototype(s)"} />
+              <br />
               <TexttoCode code={`List<string> list = new List<string>();
 
 Documents documents = new Documents(list);
@@ -167,12 +258,26 @@ for (int i = 0; i < documents.GetLength(); i++)
 }
 // "Hello World"
 
-documents.Remove(0);
+documents[0] = "Code";
+documents.Remove(1);
 for (int i = 0; i < documents.GetLength(); i++)
 {
     Console.Write(documents[i] + " ");
 }
-// "World"`} title={"Code example(s)"}/>
+// "Code"
+
+documents.Remove(0);
+Console.WriteLine(documents[0]); // IndexOutOfRangeException`} title={"Code example(s)"} />
+
+              <br />
+              <div className="bg-orange-600 text-white rounded-t-lg p-3">
+        <span
+          className="font-semibold bg-orange-400 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Warning</span>
+              </div>
+              <div className=" p-1  bg-white">
+                <p className="mb-4 mt-4">The method should throw an <span
+                  className="text-red-600 font-bold">IndexOutOfRangeException</span> if the index is out of range.</p>
+              </div>
             </div>
           } />
 
@@ -393,12 +498,22 @@ Console.WriteLine(decryptedText);
 string encryptedText = encryptDelegate("HELLO", "QWERTYUIOPASDFGHJKLZXCVBNM");
 Console.WriteLine(encryptedText);
 // "QRYYP"`} title={"Code example(s)"} />
+              <br/>
+              <div className="bg-orange-600 text-white rounded-t-lg p-3">
+        <span
+          className="font-semibold bg-orange-400 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Warning</span>
+              </div>
+              <div className=" p-1  bg-white">
+                <p className="mb-4 mt-4">The method should throw an <span
+                  className="text-red-600 font-bold">ArgumentException</span> if the name is not valid.</p>
+              </div>
             </div>
           } />
 
           <ButtonPart title={"GetDecryptDelegate"} color={"medium"} content={
             <div>
-              <p className="mb-4"> You need to create a method that will return the decryption delegate based on the name
+              <p className="mb-4"> You need to create a method that will return the decryption delegate based on the
+                name
                 of the decryption method. <br />
                 if the name is "<span className="font-bold">Substitution</span>", return the Substitution_Decrypt
                 method. <br />
@@ -411,13 +526,24 @@ Console.WriteLine(encryptedText);
               <TexttoCode code={`Decrypt_Delegate decryptDelegate = GetDecryptDelegate("Substitution"); // Substitution_Decrypt method
 string decryptedText = decryptDelegate("QRYYP", "QWERTYUIOPASDFGHJKLZXCVBNM");
 Console.WriteLine(decryptedText);
-// "HELLO"`} title={"Code example(s)"} />
+// "HELLO"
+
+Decrypt_Delegate InvalidDecryptDelegate = GetDecryptDelegate("RotationOf10"); // ArgumentException`} title={"Code example(s)"} />
+              <br />
+              <div className="bg-orange-600 text-white rounded-t-lg p-3">
+        <span
+          className="font-semibold bg-orange-400 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Warning</span>
+              </div>
+              <div className=" p-1  bg-white">
+                <p className="mb-4 mt-4">The method should throw an <span
+                  className="text-red-600 font-bold">ArgumentException</span> if the name is not valid.</p>
+              </div>
             </div>
           } />
           <br />
 
           <pre className="mb-4 text-red-600 text-2xl">
-            Document.cs
+            Documents.cs
           </pre>
           <p className="mb-4">You have to update the Documents class to include the encryption and decryption delegates.
             Then we can safely encrypt and decrypt the document and send it to the Rebels.</p>
@@ -446,7 +572,13 @@ foreach (string document in documents.EnumEncrypt(encryptDelegate))
             <div>
               <p className="mb-4">You have to implement a method that will encrypt the word at the specified index using
                 the encryption delegate.</p>
-              <TexttoCode code={`public string this[int index, Encrypt_Delegate encrypt];`} title={"Prototype(s)"} />
+              <TexttoCode code={`public string this[int index, Encrypt_Delegate encrypt]
+{
+    get
+    {
+        throw new NotImplementedException();
+    }
+}`} title={"Prototype(s)"} />
               <br />
 
               <TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
@@ -454,6 +586,15 @@ Documents documents = new Documents(list);
 encryptDelegate = Encryption.GetEncryptDelegate("Substitution");
 Console.WriteLine(documents[0, encryptDelegate]);
 // "QRYYP"`} title={"Code example(s)"} />
+
+              <br />
+              <div className="bg-orange-600 text-white rounded-t-lg p-3">
+        <span
+          className="font-semibold bg-orange-400 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Warning</span>
+              </div>
+              <div className=" p-1  bg-white">
+                <p className="mb-4 mt-4">The method should throw an <span className="text-red-600 font-bold">IndexOutOfRangeException</span> if the index is out of range.</p>
+              </div>
             </div>
           } />
 
@@ -497,8 +638,8 @@ foreach (string document in documents.EnumDecrypt(decryptDelegate))
             Planet.cs
           </pre>
 
-          <p className="mb-4">In this folder, you have to create a class call Planet and implement the following methods and properties</p>
-          <ButtonPart title={"Properties"} color={"hard"} content={
+          <p className="mb-4">In this folder, you have to create a class call Planet and implement the following methods and attributes</p>
+          <ButtonPart title={"Attributes"} color={"hard"} content={
             <div>
               <ul className="list-disc list-inside">
                 <li><span className="text-red-600">Name</span> => A public property that represents the name of the planet.</li>
@@ -518,6 +659,11 @@ foreach (string document in documents.EnumDecrypt(decryptDelegate))
             <div>
               <p className="mb-4"> You need a public method that will add a neighbor and the distance to the list of neighbors.</p>
               <TexttoCode code={`public void AddNeighbor(Planet neighbor, int distance);`} title={"Prototype(s)"} />
+              <br/>
+              <TexttoCode code={`Planet planet1 = new Planet("Alderaan");
+Planet planet2 = new Planet("Tatooine");
+planet1.AddNeighbor(planet2, 10);
+// planet1._neighbors = {(planet2, 10)}`} title={"Code example(s)"}/>
             </div>
           } />
 
@@ -544,12 +690,12 @@ foreach ((Planet neighbor, int distance) in planet1.GetEnumNeighbors())
             Galaxy.cs
           </pre>
 
-          <p className="mb-4">In this folder, you have to create a class call Galaxy and implement the following methods and properties</p>
+          <p className="mb-4">In this folder, you have to create a class call Galaxy and implement the following methods and attributes</p>
 
-          <ButtonPart title={"Properties"} color={"hard"} content={
+          <ButtonPart title={"Attribute"} color={"hard"} content={
             <div>
               <ul className="list-disc list-inside">
-                <li><span className="text-red-600">_planets</span> => A private property that represents a list of planets in the galaxy.</li>
+                <li><span className="text-red-600">Planets</span> => A public attribute that represents a list of planets in the galaxy.</li>
               </ul>
             </div>
           } />
@@ -600,11 +746,14 @@ foreach ((Planet neighbor, int distance) in planet1.GetEnumNeighbors())
 
           <ButtonPart title={"FindShortestPath"} color={"hard"} content={
             <div>
-              <p className="mb-4"> You need to create a method to find the shortest path between two planets in the galaxy so that we can successfully destroy the Death Star.<br/>
-              You can use the <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm" className="text-blue-800 underline">Dijkstra algorithm</a> to find the shortest path between two planets.</p>
-                <TexttoCode code={`public List<Planet> FindShortestPath(Planet start, Planet end);`}
+              <p className="mb-4"> You need to create a method to find the shortest path between two planets in the
+                galaxy so that we can successfully destroy the Death Star.<br />
+                You can use the <a href="https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm"
+                                   className="text-blue-800 underline">Dijkstra algorithm</a> to find the shortest path
+                between two planets.</p>
+              <TexttoCode code={`public List<Planet> FindShortestPath(Planet start, Planet end);`}
                           title={"Prototype(s)"} />
-              <br/>
+              <br />
               <TexttoCode code={`Galaxy galaxy = new Galaxy();
 Planet planet1 = new Planet("Alderaan");
 Planet planet2 = new Planet("Tatooine");
@@ -629,10 +778,18 @@ for (i = 0; i < shortestPath.Count-1; i++)
 }
 
 Console.WriteLine(shortestPath[shortestPath.Count-1].Name);
-// "Alderaan -> Tatooine -> Endor -> Hoth -> Dagobah"`} title={"Code example(s)"}/>
-
+// "Alderaan -> Tatooine -> Endor -> Hoth -> Dagobah"`} title={"Code example(s)"} />
+              <br />
+              <div className="bg-orange-600 text-white rounded-t-lg p-3">
+        <span
+          className="font-semibold bg-orange-400 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Warning</span>
+              </div>
+              <div className=" p-1  bg-white">
+                <p className="mb-4 mt-4">It is possible that there is more than one shortest path between two planets. In this case, you can return any of them.</p>
+              </div>
 
             </div>
+
           } />
 
           <img src="https://qph.cf2.quoracdn.net/main-qimg-02b971fe4719034bc990aeb2f16e62b6"
@@ -640,6 +797,8 @@ Console.WriteLine(shortestPath[shortestPath.Count-1].Name);
 
         </div>
       } />
+
+      <Footer />
 
 
     </div>
