@@ -36,7 +36,7 @@ Tp-acdc
   };
   return (
     <div className="w-full pl-5 pr-5 pt-3 pb-3">
-      <img src="./src/assets/perevsfils.png" className="w-80 h-32 object-cover" alt="Description du GIF" />
+      <img src="https://static.wikia.nocookie.net/frstarwars/images/e/e2/P%C3%A8re_vs_Fils.jpg" className="w-80 h-40 object-cover" alt="Description du GIF" />
       <h1 className="text-4xl font-sans font-semibold p-1 mt-2">The Great Offensive</h1>
       <h2 className="italic text-3xl p-2">Indexers and Iterators</h2>
       <ButtonPage title={"Guideline"} color={"info"} content={
