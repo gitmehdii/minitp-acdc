@@ -429,7 +429,7 @@ Console.WriteLine(decryptedText);
                 method. <br />The rotation of 10 method is a simple encryption method that replaces each letter in the
                 text with the letter that is 10 positions ahead in the alphabet. If the letter is at the end of the
                 alphabet, it will wrap around to the beginning.</p>
-              <TexttoCode code={`private static string RotationOf10_Encrypt(string text);`} title={"Prototype(s)"} />
+              <TexttoCode code={`public static string RotationOf10_Encrypt(string text);`} title={"Prototype(s)"} />
               <br />
               <TexttoCode code={`string plaintext = "hello";
 string encryptedText = RotationOf10_Encrypt(plaintext);
@@ -443,7 +443,7 @@ Console.WriteLine(encryptedText);
               <p className="mb-4"> You need to create a method that will decrypt the text by using the rotation of 10
                 method. <br />Each letter must be shifted 10 positions to the left in the alphabet to find the
                 plaintext.</p>
-              <TexttoCode code={`private static string RotationOf10_Decrypt(string text);`} title={"Prototype(s)"} />
+              <TexttoCode code={`public static string RotationOf10_Decrypt(string text);`} title={"Prototype(s)"} />
               <br />
               <TexttoCode code={`string encryptedText = "rovvy";
 string decryptedText = RotationOf10_Decrypt(encryptedText);
