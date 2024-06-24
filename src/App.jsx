@@ -416,7 +416,7 @@ Console.WriteLine(encryptedText);
                           title={"Prototype(s)"} />
               <br />
               <TexttoCode code={`string encryptedText = "qryyp";
-string key = "qwertyuiopasdfghjklzxcvbnm";
+string key = "azertyuipqsdfgjohekmwxcvlb";
 string decryptedText = Substitution_Decrypt(encryptedText, key);
 Console.WriteLine(decryptedText);
 // "hello"`} title={"Code example(s)"} />
@@ -529,7 +529,7 @@ Console.WriteLine(encryptedText);
               <br />
 
               <TexttoCode code={`Decrypt_Delegate decryptDelegate = GetDecryptDelegate("Substitution"); // Substitution_Decrypt method
-string decryptedText = decryptDelegate("qryyp", "qwertyuiopasdfghjklzxcvbnm");
+string decryptedText = decryptDelegate("qryyp", "azertyuipqsdfgjohekmwxcvlb");
 Console.WriteLine(decryptedText);
 // "hello"
 
