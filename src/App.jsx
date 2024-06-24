@@ -22,7 +22,7 @@ Tp-acdc
 │   ├── Preparation
 │   │   ├── Documents.cs
 │   │   ├── Encryption.cs
-│   │   └── Enum.cs
+│   │   └── EnumLists.cs
 │   ├── Tests
 │   │   └── Put your tests inside here
 │   ├── TheGreatOffensive.csproj
@@ -36,7 +36,7 @@ Tp-acdc
   };
   return (
     <div className="w-full pl-5 pr-5 pt-3 pb-3">
-      <img src="https://static.wikia.nocookie.net/frstarwars/images/e/e2/P%C3%A8re_vs_Fils.jpg" className="w-80 h-40 object-cover" alt="Description du GIF" />
+      <img src="https://static.wikia.nocookie.net/frstarwars/images/e/e2/P%C3%A8re_vs_Fils.jpg" className="w-80 h-44 object-cover" alt="Description du GIF" />
       <h1 className="text-4xl font-sans font-semibold p-1 mt-2">The Great Offensive</h1>
       <h2 className="italic text-3xl p-2">Indexers and Iterators</h2>
       <ButtonPage title={"Guideline"} color={"info"} content={
@@ -72,7 +72,7 @@ Tp-acdc
             <span className="italic text-xl">"Much to learn, you still have."</span>
           </p>
           <pre className="mb-4 text-red-600 text-2xl">
-            Enum.cs
+            EnumLists.cs
           </pre>
           <p className="mb-4">In this folder, you have to create a static class called Enum and implement the following methods</p>
           <ButtonPart title={"EnumList"} color={"easy"} content={
@@ -373,10 +373,11 @@ documents.Reset();
           <p className="mb-4">Before creating the method in the class, you need to create two delegates: one for
             encryption and one for decryption. Add these prototypes just before the class definition. (don't modify
             it)</p>
+          <p className="font-semibold">All the text for the encryption and decryption methods will be in lowercase.</p>
           <ButtonPart title={"Delegates"} color={"medium"} content={
             <div>
-              <TexttoCode code={`public delegate string Encrypt_Delegate(string text);
-public delegate string Decrypt_Delegate(string text);`} title={"Prototype(s)"} />
+              <TexttoCode code={`public delegate string Encrypt_Delegate(string text, string key);
+public delegate string Decrypt_Delegate(string text, string key);`} title={"Prototype(s)"} />
               <br />
             </div>
           } />
@@ -394,11 +395,11 @@ public delegate string Decrypt_Delegate(string text);`} title={"Prototype(s)"} /
               <TexttoCode code={`private static string Substitution_Encrypt(string text, string key);`}
                           title={"Prototype(s)"} />
               <br />
-              <TexttoCode code={`string plaintext = "HELLO";
-string key = "QWERTYUIOPASDFGHJKLZXCVBNM";
+              <TexttoCode code={`string plaintext = "hello";
+string key = "qwertyuiopasdfghjklzxcvbnm";
 string encryptedText = Substitution_Encrypt(plaintext, key);
 Console.WriteLine(encryptedText);
-// "QRYYP"`} title={"Code example(s)"} />
+// "qryyp"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -414,11 +415,11 @@ Console.WriteLine(encryptedText);
               <TexttoCode code={`private static string Substitution_Decrypt(string text, string key);`}
                           title={"Prototype(s)"} />
               <br />
-              <TexttoCode code={`string encryptedText = "QRYYP";
-string key = "QWERTYUIOPASDFGHJKLZXCVBNM";
+              <TexttoCode code={`string encryptedText = "qryyp";
+string key = "qwertyuiopasdfghjklzxcvbnm";
 string decryptedText = Substitution_Decrypt(encryptedText, key);
 Console.WriteLine(decryptedText);
-// "HELLO"`} title={"Code example(s)"} />
+// "hello"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -430,10 +431,10 @@ Console.WriteLine(decryptedText);
                 alphabet, it will wrap around to the beginning.</p>
               <TexttoCode code={`private static string RotationOf10_Encrypt(string text);`} title={"Prototype(s)"} />
               <br />
-              <TexttoCode code={`string plaintext = "HELLO";
+              <TexttoCode code={`string plaintext = "hello";
 string encryptedText = RotationOf10_Encrypt(plaintext);
 Console.WriteLine(encryptedText);
-// "ROVVY"`} title={"Code example(s)"} />
+// "rovvy"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -444,6 +445,10 @@ Console.WriteLine(encryptedText);
                 plaintext.</p>
               <TexttoCode code={`private static string RotationOf10_Decrypt(string text);`} title={"Prototype(s)"} />
               <br />
+              <TexttoCode code={`string encryptedText = "rovvy";
+string decryptedText = RotationOf10_Decrypt(encryptedText);
+Console.WriteLine(decryptedText);
+// "hello"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -456,11 +461,11 @@ Console.WriteLine(encryptedText);
               <TexttoCode code={`private static string Vigenere_Encrypt(string text, string key);`}
                           title={"Prototype(s)"} />
               <br />
-              <TexttoCode code={`string plaintext = "HELLO";
-string key = "KEY";
+              <TexttoCode code={`string plaintext = "hello";
+string key = "key";
 string encryptedText = Vigenere_Encrypt(plaintext, key);
 Console.WriteLine(encryptedText);
-// "ROVVY"`} title={"Code example(s)"} />
+// "rovvy"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -472,11 +477,11 @@ Console.WriteLine(encryptedText);
               <TexttoCode code={`private string Vigenere_Decrypt(string text, string key);`} title={"Prototype(s)"} />
               <br />
 
-              <TexttoCode code={`string encryptedText = "ROVVY";
-string key = "KEY";
+              <TexttoCode code={`string encryptedText = "rovvy";
+string key = "key";
 string decryptedText = Vigenere_Decrypt(encryptedText, key);
 Console.WriteLine(decryptedText);
-// "HELLO"`} title={"Code example(s)"} />
+// "hello"`} title={"Code example(s)"} />
 
             </div>
           } />
@@ -495,9 +500,9 @@ Console.WriteLine(decryptedText);
               <br />
 
               <TexttoCode code={`Encrypt_Delegate encryptDelegate = GetEncryptDelegate("Substitution"); // Substitution_Encrypt method
-string encryptedText = encryptDelegate("HELLO", "QWERTYUIOPASDFGHJKLZXCVBNM");
+string encryptedText = encryptDelegate("hello", "qwertyuiopasdfghjklzxcvbnm");
 Console.WriteLine(encryptedText);
-// "QRYYP"`} title={"Code example(s)"} />
+// "qryyp"`} title={"Code example(s)"} />
               <br/>
               <div className="bg-orange-600 text-white rounded-t-lg p-3">
         <span
@@ -524,9 +529,9 @@ Console.WriteLine(encryptedText);
               <br />
 
               <TexttoCode code={`Decrypt_Delegate decryptDelegate = GetDecryptDelegate("Substitution"); // Substitution_Decrypt method
-string decryptedText = decryptDelegate("QRYYP", "QWERTYUIOPASDFGHJKLZXCVBNM");
+string decryptedText = decryptDelegate("qryyp", "qwertyuiopasdfghjklzxcvbnm");
 Console.WriteLine(decryptedText);
-// "HELLO"
+// "hello"
 
 Decrypt_Delegate InvalidDecryptDelegate = GetDecryptDelegate("RotationOf10"); // ArgumentException`} title={"Code example(s)"} />
               <br />
@@ -552,19 +557,19 @@ Decrypt_Delegate InvalidDecryptDelegate = GetDecryptDelegate("RotationOf10"); //
             <div>
               <p className="mb-4">You have to implement a method that will encrypt all the words in the list using the
                 encryption delegate and return the encrypted words as an IEnumerable.</p>
-              <TexttoCode code={`public IEnumerable<string> EnumEncrypt(Encrypt_Delegate encrypt);`}
+              <TexttoCode code={`public IEnumerable<string> EnumEncrypt(Encrypt_Delegate encrypt, string key);`}
                           title={"Prototype(s)"} />
               <br />
 
-              <TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
+              <TexttoCode code={`List<string> list = new List<string> { "hello", "world" };
 Documents documents = new Documents(list);
 encryptDelegate = Encryption.GetEncryptDelegate("Substitution");
-foreach (string document in documents.EnumEncrypt(encryptDelegate))
+foreach (string document in documents.EnumEncrypt(encryptDelegate, "qwertyuiopasdfghjklzxcvbnm"))
 {
     Console.WriteLine(document);
 }
-// "QRYYP"
-// "XJYLD"`} title={"Code example(s)"} />
+// "qryyp"
+// "xjyld"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -572,7 +577,7 @@ foreach (string document in documents.EnumEncrypt(encryptDelegate))
             <div>
               <p className="mb-4">You have to implement a method that will encrypt the word at the specified index using
                 the encryption delegate.</p>
-              <TexttoCode code={`public string this[int index, Encrypt_Delegate encrypt]
+              <TexttoCode code={`public string this[int index, Encrypt_Delegate encrypt, string key]
 {
     get
     {
@@ -581,11 +586,11 @@ foreach (string document in documents.EnumEncrypt(encryptDelegate))
 }`} title={"Prototype(s)"} />
               <br />
 
-              <TexttoCode code={`List<string> list = new List<string> { "Hello", "World" };
+              <TexttoCode code={`List<string> list = new List<string> { "hello", "world" };
 Documents documents = new Documents(list);
 encryptDelegate = Encryption.GetEncryptDelegate("Substitution");
-Console.WriteLine(documents[0, encryptDelegate]);
-// "QRYYP"`} title={"Code example(s)"} />
+Console.WriteLine(documents[0, encryptDelegate, "qwertyuiopasdfghjklzxcvbnm"]);
+// "qryyp"`} title={"Code example(s)"} />
 
               <br />
               <div className="bg-orange-600 text-white rounded-t-lg p-3">
@@ -602,19 +607,19 @@ Console.WriteLine(documents[0, encryptDelegate]);
             <div>
               <p className="mb-4">You have to implement a method that will decrypt all the words in the list using the
                 decryption delegate and return the decrypted words as an IEnumerable.</p>
-              <TexttoCode code={`public IEnumerable<string> EnumDecrypt(Decrypt_Delegate decrypt);`}
+              <TexttoCode code={`public IEnumerable<string> EnumDecrypt(Decrypt_Delegate decrypt, string key);`}
                           title={"Prototype(s)"} />
               <br />
 
-              <TexttoCode code={`List<string> list = new List<string> { "QRYYP", "XJYLD" };
+              <TexttoCode code={`List<string> list = new List<string> { "qryyp", "xjyld" };
 Documents documents = new Documents(list);
 decryptDelegate = Encryption.GetDecryptDelegate("Substitution");
-foreach (string document in documents.EnumDecrypt(decryptDelegate))
+foreach (string document in documents.EnumDecrypt(decryptDelegate, "qwertyuiopasdfghjklzxcvbnm"))
 {
     Console.WriteLine(document);
 }
-// "Hello"
-// "World"`} title={"Code example(s)"} />
+// "hello"
+// "world"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -785,7 +790,9 @@ Console.WriteLine(shortestPath[shortestPath.Count-1].Name);
           className="font-semibold bg-orange-400 pr-2 pl-2 pb-1.5 pt-1.5 bg rounded border border-gray-800 border-2">Warning</span>
               </div>
               <div className=" p-1  bg-white">
-                <p className="mb-4 mt-4">It is possible that there is more than one shortest path between two planets. In this case, you can return any of them.</p>
+                <p className="mb-4 mt-4">It is possible that there is more than one shortest path between two planets.
+                  In this case, you can return any of them.</p>
+                <p className="mb-4 mt-4">The method should return null if there is no path between the two planets.</p>
               </div>
 
             </div>
