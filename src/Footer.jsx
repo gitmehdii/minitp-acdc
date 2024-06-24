@@ -1,6 +1,8 @@
 import React from 'react';
 import { FaGithub } from 'react-icons/fa'; // Importer l'icône Github
 
+// Composant Footer
+
 function Footer() {
   return (
     <footer className="bg-gray-800 text-white py-10 px-5 mt-10 rounded">

@@ -307,7 +307,7 @@ foreach (string document in documents)
 
           <ButtonPart title={"MoveNext"} color={"easy"} content={
             <div>
-              <p className="mb-4"> Create a method that will return true if there is a next word or false if the index is out of range.</p>
+              <p className="mb-4"> Create a method that will increment by one the position and return true if there is a word or false if the index is out of range.</p>
               <TexttoCode code={`public bool MoveNext();`} title={"Prototype(s)"}/>
             </div>
           } />
@@ -399,7 +399,7 @@ public delegate string Decrypt_Delegate(string text, string key);`} title={"Prot
 string key = "qwertyuiopasdfghjklzxcvbnm";
 string encryptedText = Substitution_Encrypt(plaintext, key);
 Console.WriteLine(encryptedText);
-// "qryyp"`} title={"Code example(s)"} />
+// "itssg"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -465,7 +465,7 @@ Console.WriteLine(decryptedText);
 string key = "key";
 string encryptedText = Vigenere_Encrypt(plaintext, key);
 Console.WriteLine(encryptedText);
-// "rovvy"`} title={"Code example(s)"} />
+// "rjkwt"`} title={"Code example(s)"} />
             </div>
           } />
 
@@ -477,7 +477,7 @@ Console.WriteLine(encryptedText);
               <TexttoCode code={`private string Vigenere_Decrypt(string text, string key);`} title={"Prototype(s)"} />
               <br />
 
-              <TexttoCode code={`string encryptedText = "rovvy";
+              <TexttoCode code={`string encryptedText = "rjkwt";
 string key = "key";
 string decryptedText = Vigenere_Decrypt(encryptedText, key);
 Console.WriteLine(decryptedText);
@@ -502,7 +502,9 @@ Console.WriteLine(decryptedText);
               <TexttoCode code={`Encrypt_Delegate encryptDelegate = GetEncryptDelegate("Substitution"); // Substitution_Encrypt method
 string encryptedText = encryptDelegate("hello", "qwertyuiopasdfghjklzxcvbnm");
 Console.WriteLine(encryptedText);
-// "qryyp"`} title={"Code example(s)"} />
+// "itssg"
+Encrypt_Delegate InvalidEncryptDelegate = GetEncryptDelegate("RotationOf10"); // ArgumentException
+`} title={"Code example(s)"} />
               <br/>
               <div className="bg-orange-600 text-white rounded-t-lg p-3">
         <span
@@ -532,7 +534,6 @@ Console.WriteLine(encryptedText);
 string decryptedText = decryptDelegate("qryyp", "azertyuipqsdfgjohekmwxcvlb");
 Console.WriteLine(decryptedText);
 // "hello"
-
 Decrypt_Delegate InvalidDecryptDelegate = GetDecryptDelegate("RotationOf10"); // ArgumentException`} title={"Code example(s)"} />
               <br />
               <div className="bg-orange-600 text-white rounded-t-lg p-3">
